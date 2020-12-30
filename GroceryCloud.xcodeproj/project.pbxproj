@@ -118,7 +118,7 @@
 				TargetAttributes = {
 					888CE1641E6778CE00B51916 = {
 						CreatedOnToolsVersion = 8.2.1;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1230;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.iCloud = {
@@ -311,7 +311,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jesseyoungblood.GroceryCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -327,7 +327,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jesseyoungblood.GroceryCloud;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

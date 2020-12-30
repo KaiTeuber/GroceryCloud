@@ -288,7 +288,7 @@ class GroceryListManager: GroceryListDocumentDelegate {
         
         // If this event is already in the 'saved' list, remove it
         
-        if let index = items.index(of: item) {
+        if let index = items.firstIndex(of: item) {
             
             items.remove(at: index)
         }
@@ -319,7 +319,7 @@ class GroceryListManager: GroceryListDocumentDelegate {
             return
         }
         
-        if let index = items.index(of: item) {
+        if let index = items.firstIndex(of: item) {
             
             items.remove(at: index)
         }
