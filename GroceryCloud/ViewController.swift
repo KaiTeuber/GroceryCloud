@@ -35,7 +35,7 @@ class ViewController: UITableViewController, GroceryListManagerDelegate {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.navigationBar.barTintColor = UIColor(red: 252.0/255.0, green: 182.0/255.0, blue: 54.0/255.0, alpha: 1.0)
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: UIColor.white])
         UIApplication.shared.statusBarStyle = .lightContent
         
         self.title = "Grocery List"
@@ -69,12 +69,12 @@ class ViewController: UITableViewController, GroceryListManagerDelegate {
     // MARK: -
     
     /// Present an input VC and ask the user to type the name of an item to add
-    func add() {
+    @objc func add() {
         
         let title = "Add Item"
         let message = "Add a grocery item"
         
-        let prompt = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let prompt = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         prompt.addTextField { (textField) in
             
@@ -112,7 +112,7 @@ class ViewController: UITableViewController, GroceryListManagerDelegate {
     }
     
     /// Toggle the tabele's Edit mode
-    func toggleEdit() {
+    @objc func toggleEdit() {
         
         if tableView.isEditing {
             
@@ -139,14 +139,14 @@ class ViewController: UITableViewController, GroceryListManagerDelegate {
     }
     
     /// Prompt the user if they would like to remove all items from their grocery list
-    func promptToRemoveAll() {
+    @objc func promptToRemoveAll() {
         
         // If edit mode is enabled, they have the option to remove all items. We want to be sure to prompt them first, though.
         
         let title = "Remove All Items"
         let message = "Would you like to remove all items from this list?"
         
-        let prompt = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let prompt = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         
         prompt.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
@@ -200,7 +200,7 @@ class ViewController: UITableViewController, GroceryListManagerDelegate {
         return true
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
             
@@ -269,4 +269,11 @@ class ViewController: UITableViewController, GroceryListManagerDelegate {
             self.tableView.reloadData()
         }
     }
+}
+
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

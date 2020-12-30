@@ -50,7 +50,7 @@ class GroceryItemCell: UITableViewCell {
         checkboxView.frame = CGRect(x: (frame.width - 40), y: ((frame.height - 30) / 2), width: 30, height: 30)
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         checkboxView = UIImageView()
         
